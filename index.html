@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grace Light — световики церкви "Благодать"</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Grace Light — команда световиков церкви «Благодать». Мы освещаем путь поклонения: подключение, управление и обслуживание световой техники." />
+  <!-- Tailwind Play CDN (подойдёт для прототипа) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Небольшие локальные стили для модального окна */
+    .backdrop-blur { backdrop-filter: blur(4px); }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
+  <!-- ===== Header ===== -->
+  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="assets/logo.png" alt="Grace Light Logo" class="w-12 h-12 rounded-full shadow-lg">
+      <div>
+        <h1 class="text-2xl font-extrabold tracking-tight">Grace Light</h1>
+        <p class="text-sm text-yellow-300">«Вы - свет мира», а мы — свет церкви 😉</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-6">
+      <a href="#about" class="hover:text-yellow-300">О нас</a>
+      <a href="#team" class="hover:text-yellow-300">Команда</a>
+      <a href="#gallery" class="hover:text-yellow-300">Галерея</a>
+      <a href="#contact" class="hover:text-yellow-300">Контакты</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden p-2 rounded bg-gray-800/60">Меню</button>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="relative">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 relative z-10 flex flex-col md:flex-row items-center gap-8">
+      <div class="md:w-1/2">
+        <h2 class="text-4xl md:text-5xl font-extrabold">Мы освещаем путь поклонения</h2>
+        <p class="mt-4 text-gray-200">Grace Light — команда световиков церкви «Благодать». Мы создаём атмосферу для служения: подключение, управление и обслуживание оборудования.</p>
+        <div class="mt-6 flex gap-4">
+          <a href="#team" class="px-6 py-3 rounded-lg bg-yellow-400 text-gray-900 font-semibold">Стать частью</a>
+          <a href="#gallery" class="px-6 py-3 rounded-lg border border-gray-700">Посмотреть фото</a>
+        </div>
+      </div>
+      <div class="md:w-1/2">
+        <!-- Hero image placeholder -->
+        <div class="w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center">
+          <img src="assets/hero.JPG" alt="hero" class="w-full h-full object-cover opacity-80">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- ===== About ===== -->
+    <section id="about" class="mb-12">
+      <h3 class="text-2xl font-bold">О нас</h3>
+      <p class="mt-4 text-gray-300">Grace Light — команда добровольцев, которые служат церкви «Благодать», помогая создать атмосферу для поклонения с помощью света. Мы не просто настраиваем приборы: мы усиливаем музыкальное и духовное переживания.</p>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-4 rounded-lg bg-gray-800/50">
+          <h4 class="font-semibold">Наша миссия</h4>
+          <p class="mt-2 text-sm text-gray-300">Служить через технику, чтобы каждый мог видеть и чувствовать атмосферу поклонения.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-gray-800/50">
+          <h4 class="font-semibold">Наш подход</h4>
+          <p class="mt-2 text-sm text-gray-300">Профессионально, с любовью и вниманием к деталям — от монтажа до ремонта.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-gray-800/50">
+          <h4 class="font-semibold">Кто может присоединиться</h4>
+          <p class="mt-2 text-sm text-gray-300">Любой, кто готов учиться и служить: от новичка с желанием помочь до техников с опытом.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Team ===== -->
+    <section id="team" class="mb-12">
+      <h3 class="text-2xl font-bold">Команда</h3>
+      <p class="mt-2 text-gray-300">У нас три направления в служении. Под каждым блоком — своя галерея вакансии.</p>
+
+      <!-- Light Connect -->
+      <article class="mt-8 bg-gray-800/40 p-6 rounded-lg">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <h4 class="text-xl font-semibold">Light Connect — Подключение приборов</h4>
+            <p class="mt-3 text-gray-300">Монтаж, прокладка кабелей, подключение приборов и подготовка зала к служению. Идеально для тех, кто любит работать руками и разбираться в технике.</p>
+            <button data-gallery="connect" class="mt-4 px-4 py-2 rounded bg-yellow-400 text-gray-900 font-semibold open-gallery">Открыть галерею</button>
+          </div>
+          <div class="md:w-2/3">
+            <div class="grid grid-cols-3 gap-3">
+              <!-- Thumbnails -->
+              <img src="assets/connect1.jpg" alt="connect1" class="rounded cursor-pointer thumb" data-gallery="connect">
+              <img src="assets/connect2.jpg" alt="connect2" class="rounded cursor-pointer thumb" data-gallery="connect">
+              <img src="assets/connect3.jpg" alt="connect3" class="rounded cursor-pointer thumb" data-gallery="connect">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Light Control -->
+      <article class="mt-6 bg-gray-800/40 p-6 rounded-lg">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <h4 class="text-xl font-semibold">Light Control — Управление светом</h4>
+            <p class="mt-3 text-gray-300">Работа за пультом во время служения: создание сцен, программирование эффектов и живое управление светом.</p>
+            <button data-gallery="control" class="mt-4 px-4 py-2 rounded bg-yellow-400 text-gray-900 font-semibold open-gallery">Открыть галерею</button>
+          </div>
+          <div class="md:w-2/3">
+            <div class="grid grid-cols-3 gap-3">
+              <img src="assets/control1.jpg" alt="control1" class="rounded cursor-pointer thumb" data-gallery="control">
+              <img src="assets/control2.jpg" alt="control2" class="rounded cursor-pointer thumb" data-gallery="control">
+              <img src="assets/control3.jpg" alt="control3" class="rounded cursor-pointer thumb" data-gallery="control">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Light Care -->
+      <article class="mt-6 bg-gray-800/40 p-6 rounded-lg">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <h4 class="text-xl font-semibold">Light Care — Обслуживание и ремонт</h4>
+            <p class="mt-3 text-gray-300">Диагностика, профилактика и ремонт приборов — гарантия бесперебойной работы во время служений.</p>
+            <button data-gallery="care" class="mt-4 px-4 py-2 rounded bg-yellow-400 text-gray-900 font-semibold open-gallery">Открыть галерею</button>
+          </div>
+          <div class="md:w-2/3">
+            <div class="grid grid-cols-3 gap-3">
+              <img src="assets/care1.jpg" alt="care1" class="rounded cursor-pointer thumb" data-gallery="care">
+              <img src="assets/care2.jpg" alt="care2" class="rounded cursor-pointer thumb" data-gallery="care">
+              <img src="assets/care3.jpg" alt="care3" class="rounded cursor-pointer thumb" data-gallery="care">
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ===== Global Gallery ===== -->
+    <section id="gallery" class="mb-12">
+      <h3 class="text-2xl font-bold">Галерея</h3>
+      <p class="text-gray-300 mt-2">Лучшие кадры с наших служений и закулисья.</p>
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <img src="assets/g1.jpg" class="rounded cursor-pointer thumb" data-gallery="all" alt="g1">
+        <img src="assets/g2.jpg" class="rounded cursor-pointer thumb" data-gallery="all" alt="g2">
+        <img src="assets/g3.jpg" class="rounded cursor-pointer thumb" data-gallery="all" alt="g3">
+        <img src="assets/g4.jpg" class="rounded cursor-pointer thumb" data-gallery="all" alt="g4">
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="mb-12">
+      <h3 class="text-2xl font-bold">Контакты</h3>
+      <p class="text-gray-300 mt-2">Хочешь присоединиться или есть вопросы? Напиши нам.</p>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form id="contactForm" class="space-y-4 bg-gray-800/40 p-6 rounded-lg" onsubmit="handleForm(event)">
+          <div>
+            <label class="block text-sm">Имя</label>
+            <input required name="name" class="mt-1 w-full rounded px-3 py-2 bg-gray-900 border border-gray-700" />
+          </div>
+          <div>
+            <label class="block text-sm">Email или телефон</label>
+            <input required name="contact" class="mt-1 w-full rounded px-3 py-2 bg-gray-900 border border-gray-700" />
+          </div>
+          <div>
+            <label class="block text-sm">Сообщение</label>
+            <textarea required name="message" rows="4" class="mt-1 w-full rounded px-3 py-2 bg-gray-900 border border-gray-700"></textarea>
+          </div>
+          <div class="flex gap-3">
+            <button type="submit" class="px-4 py-2 rounded bg-yellow-400 text-gray-900 font-semibold">Отправить</button>
+            <button type="reset" class="px-4 py-2 rounded border border-gray-700">Очистить</button>
+          </div>
+          <p id="formFeedback" class="text-sm text-green-400 hidden">Спасибо! Мы свяжемся с вами.</p>
+        </form>
+
+        <div class="bg-gray-800/40 p-6 rounded-lg">
+          <h4 class="font-semibold mb-4">Координатор служения</h4>
+          <img src="assets/atrem.jpg" alt="Артём Пинчук" class="w-32 h-32 object-cover rounded-full shadow-lg border-2 border-yellow-300">
+          <p class="mt-2 text-gray-300">Артём Пинчук</p>
+          <p class="text-sm text-gray-400 mt-1">Тел: +375 (29) 807-48-26</p>
+          <p class="text-sm text-gray-400">Email: <a href="mailto:info@gracelight.example" class="text-yellow-300">info@gracelight.example</a></p>
+
+          <div class="mt-6">
+            <h5 class="font-medium">Как присоединиться</h5>
+            <ol class="mt-2 text-sm text-gray-300 list-decimal list-inside">
+              <li>Свяжитесь с координатором или заполните форму.</li>
+              <li>Приходите на репетицию для ознакомления.</li>
+              <li>Мы обучим и распределим по направлениям.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-gray-800/60 pt-6 text-sm text-gray-400">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>© <span id="year"></span> Grace Light — служение церкви «Благодать»</div>
+        <div>Сделано командой Grace Light</div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===== Lightbox modal ===== -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-6">
+    <div id="lbBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur" onclick="closeLightbox()"></div>
+    <div class="relative z-10 max-w-4xl w-full">
+      <button class="absolute right-0 top-0 m-3 px-3 py-1 rounded bg-gray-800/60" onclick="closeLightbox()">Закрыть</button>
+      <div id="lbContent" class="rounded overflow-hidden bg-gray-900 p-4">
+        <img id="lbImage" src="" alt="" class="w-full h-[60vh] object-contain rounded" />
+        <p id="lbCaption" class="mt-2 text-sm text-gray-300"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fill year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbCaption = document.getElementById('lbCaption');
+
+    function openLightbox(src, alt) {
+      lbImage.src = src;
+      lbCaption.textContent = alt || '';
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+      lbImage.src = '';
+    }
+
+    // Attach click handlers to thumbnails
+    document.querySelectorAll('.thumb').forEach(img => {
+      img.addEventListener('click', e => {
+        const src = img.getAttribute('data-full') || img.src;
+        openLightbox(src, img.alt || '');
+      });
+    });
+
+    // Gallery buttons open first image of section
+    document.querySelectorAll('.open-gallery').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const gallery = btn.getAttribute('data-gallery');
+        const first = document.querySelector(`.thumb[data-gallery="${gallery}"]`);
+        if (first) first.click();
+      });
+    });
+
+    // Simple form handler — здесь можно подключить формыervice (Formspree, Netlify) позже
+    function handleForm(e){
+      e.preventDefault();
+      const form = e.target;
+      // Простая валидация уже handled required
+      // Для прототипа: показываем сообщение и очищаем форму
+      document.getElementById('formFeedback').classList.remove('hidden');
+      setTimeout(()=>{ document.getElementById('formFeedback').classList.add('hidden'); }, 5000);
+      form.reset();
+    }
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', ()=>{
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- ===== Development notes ===== -->
+  <!--
+    Как доработать проект:
+    1) Замените placeholder-изображения в <img src="..."> на реальные файлы (поместите в папку /assets и поменяйте пути).
+    2) Для отправки формы подключите Formspree / Netlify Forms или свой backend. В HTML у формы замените onsubmit и action.
+    3) Для деплоя: достаточно загрузить этот файл на хостинг (Netlify, Vercel static, GitHub Pages) и положить папку assets рядом.
+    4) Шрифты: подключите Google Fonts при желании, или оставьте системные.
+    5) Для улучшения: можно сделать отдельные страницы для вакансий, добавить календарь репетиций и FAQ.
+  -->
+</body>
+</html>

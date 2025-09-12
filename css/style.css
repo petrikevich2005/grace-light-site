@@ -1,0 +1,40 @@
+/* --- Добавить в css/style.css --- */
+
+/* Плавный скролл по якорям */
+html { scroll-behavior: smooth; }
+
+/* Универсальные hover/transition для кнопок */
+.btn {
+  transition: transform .16s cubic-bezier(.2,.8,.2,1), box-shadow .16s;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Лёгкий hover для ссылок в навигации */
+.nav-link, .nav-link-mobile {
+  transition: color .14s, background-color .14s;
+}
+
+/* Lightbox arrows (видимы когда галерея >1) */
+#lbPrev, #lbNext {
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: .92;
+  backdrop-filter: blur(2px);
+}
+#lbPrev:hover, #lbNext:hover {
+  opacity: 1;
+}
+
+/* Мобильное меню: центрирование + мягкая анимация открытия */
+#mobileMenu > .relative {
+  transform-origin: center;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+/* Немного подстраховка для маленьких экранов */
+@media (max-width: 640px) {
+  #lbImage { height: 50vh; }
+}

@@ -15,21 +15,25 @@
 </head>
 <body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
   <!-- ===== Header ===== -->
-  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
-    <div class="flex items-center gap-4">
+  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between" id="siteHeader">
+    <div class="flex items-center gap-4" id="brand">
       <img src="assets/logo.png" alt="Grace Light Logo" class="w-12 h-12 rounded-full shadow-lg">
       <div>
         <h1 class="text-2xl font-extrabold tracking-tight">Grace Light</h1>
         <p class="text-sm text-yellow-300">«Вы - свет мира», а мы — свет церкви 😉</p>
       </div>
     </div>
-    <nav class="hidden md:flex gap-6">
-      <a href="#about" class="hover:text-yellow-300">О нас</a>
-      <a href="#team" class="hover:text-yellow-300">Команда</a>
-      <a href="#gallery" class="hover:text-yellow-300">Галерея</a>
-      <a href="#contact" class="hover:text-yellow-300">Контакты</a>
+
+    <!-- Навигация: изначально скрыта на мобилке (hidden md:flex) -->
+    <nav id="mainNav" class="flex gap-6 items-center">
+      <a href="#about" class="hover:text-yellow-300 nav-link">О нас</a>
+      <a href="#team" class="hover:text-yellow-300 nav-link">Команда</a>
+      <a href="#gallery" class="hover:text-yellow-300 nav-link">Галерея</a>
+      <a href="#contact" class="hover:text-yellow-300 nav-link">Контакты</a>
     </nav>
-    <button id="menuBtn" class="md:hidden p-2 rounded bg-gray-800/60">Меню</button>
+
+    <!-- Кнопка меню: теперь видна всегда, JS будет прятать/показывать её -->
+    <button id="menuBtn" class="p-2 rounded bg-gray-800/60 btn" aria-label="Открыть меню">Меню</button>
   </header>
 
   <!-- ===== Hero ===== -->
@@ -52,6 +56,20 @@
       </div>
     </div>
   </section>
+
+  <!-- Мобильное меню (overlay) -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 hidden items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur" onclick="closeMobileMenu()"></div>
+    <div class="relative z-10 w-full max-w-sm mx-auto bg-gray-900 rounded-lg p-6">
+      <button class="absolute right-3 top-3 px-3 py-1 rounded bg-gray-800/60" onclick="closeMobileMenu()">Закрыть</button>
+      <nav class="flex flex-col gap-4 mt-4">
+        <a href="#about" class="py-2 px-3 rounded hover:bg-gray-800 nav-link-mobile">О нас</a>
+        <a href="#team" class="py-2 px-3 rounded hover:bg-gray-800 nav-link-mobile">Команда</a>
+        <a href="#gallery" class="py-2 px-3 rounded hover:bg-gray-800 nav-link-mobile">Галерея</a>
+        <a href="#contact" class="py-2 px-3 rounded hover:bg-gray-800 nav-link-mobile">Контакты</a>
+      </nav>
+    </div>
+  </div>
 
   <main class="max-w-6xl mx-auto px-6 py-12">
     <!-- ===== About ===== -->
@@ -164,7 +182,7 @@
             <input required name="name" class="mt-1 w-full rounded px-3 py-2 bg-gray-900 border border-gray-700" />
           </div>
           <div>
-            <label class="block text-sm">Email или телефон</label>
+            <label class="block text-sm">Телеграм или телефон</label>
             <input required name="contact" class="mt-1 w-full rounded px-3 py-2 bg-gray-900 border border-gray-700" />
           </div>
           <div>
@@ -205,74 +223,24 @@
     </footer>
   </main>
 
-  <!-- ===== Lightbox modal ===== -->
+  <!-- ===== Lightbox modal (заменяет существующий) ===== -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-6">
     <div id="lbBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur" onclick="closeLightbox()"></div>
     <div class="relative z-10 mx-auto max-w-4xl w-full">
       <button class="absolute right-0 top-0 m-3 px-3 py-1 rounded bg-gray-800/60" onclick="closeLightbox()">Закрыть</button>
-      <div id="lbContent" class="rounded overflow-hidden bg-gray-900 p-4">
-        <img id="lbImage" src="" alt="" class="w-full h-[60vh] object-contain rounded" />
+      <div id="lbContent" class="rounded overflow-hidden bg-gray-900 p-4 flex flex-col items-center">
+        <div class="w-full relative">
+          <button id="lbPrev" class="absolute left-0 top-1/2 -translate-y-1/2 px-3 py-2 bg-gray-800/40 rounded-l hidden">‹</button>
+          <img id="lbImage" src="" alt="" class="w-full h-[60vh] object-contain rounded" />
+          <button id="lbNext" class="absolute right-0 top-1/2 -translate-y-1/2 px-3 py-2 bg-gray-800/40 rounded-r hidden">›</button>
+        </div>
         <p id="lbCaption" class="mt-2 text-sm text-gray-300"></p>
+        <div id="lbCounter" class="mt-2 text-xs text-gray-400"></div>
       </div>
     </div>
   </div>
 
-  <script>
-    // Fill year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple lightbox logic
-    const lightbox = document.getElementById('lightbox');
-    const lbImage = document.getElementById('lbImage');
-    const lbCaption = document.getElementById('lbCaption');
-
-    function openLightbox(src, alt) {
-      lbImage.src = src;
-      lbCaption.textContent = alt || '';
-      lightbox.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox(){
-      lightbox.classList.add('hidden');
-      document.body.style.overflow = '';
-      lbImage.src = '';
-    }
-
-    // Attach click handlers to thumbnails
-    document.querySelectorAll('.thumb').forEach(img => {
-      img.addEventListener('click', e => {
-        const src = img.getAttribute('data-full') || img.src;
-        openLightbox(src, img.alt || '');
-      });
-    });
-
-    // Gallery buttons open first image of section
-    document.querySelectorAll('.open-gallery').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const gallery = btn.getAttribute('data-gallery');
-        const first = document.querySelector(`.thumb[data-gallery="${gallery}"]`);
-        if (first) first.click();
-      });
-    });
-
-    // Simple form handler — здесь можно подключить формыervice (Formspree, Netlify) позже
-    function handleForm(e){
-      e.preventDefault();
-      const form = e.target;
-      // Простая валидация уже handled required
-      // Для прототипа: показываем сообщение и очищаем форму
-      document.getElementById('formFeedback').classList.remove('hidden');
-      setTimeout(()=>{ document.getElementById('formFeedback').classList.add('hidden'); }, 5000);
-      form.reset();
-    }
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn.addEventListener('click', ()=>{
-      const nav = document.querySelector('nav');
-      nav.classList.toggle('hidden');
-    });
-  </script>
+  <script src="js/main.js"></script>
 
   <!-- ===== Development notes ===== -->
   <!--

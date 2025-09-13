@@ -223,11 +223,11 @@
     </footer>
   </main>
 
-  <!-- ===== Lightbox modal (заменяет существующий) ===== -->
+  <!-- ===== Lightbox modal ===== -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-6">
     <div id="lbBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur" onclick="closeLightbox()"></div>
     <div class="relative z-10 mx-auto max-w-4xl w-full">
-      <button class="absolute right-0 top-0 m-3 px-3 py-1 rounded bg-gray-800/60" onclick="closeLightbox()">Закрыть</button>
+      <button id="lbClose" class="absolute right-0 top-0 m-3 px-3 py-1 rounded bg-gray-800/60 z-50 pointer-events-auto" onclick="closeLightbox()">X</button>
       <div id="lbContent" class="rounded overflow-hidden bg-gray-900 p-4 flex flex-col items-center">
         <div class="w-full relative">
           <button id="lbPrev" class="absolute left-0 top-1/2 -translate-y-1/2 px-3 py-2 bg-gray-800/40 rounded-l hidden">‹</button>
